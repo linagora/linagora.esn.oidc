@@ -22,7 +22,7 @@ module.exports = function(config) {
       'test/config/mocks.js',
       `frontend/app/${MODULE_PREFIX}.app.js`,
       'frontend/app/**/*.js',
-      'frontend/app/**/*.jade',
+      'frontend/app/**/*.pug',
       'frontend/app/*.js'
     ],
     frameworks: ['mocha'],
@@ -33,7 +33,7 @@ module.exports = function(config) {
     reporters: ['coverage', 'spec'],
     preprocessors: {
       'frontend/app/**/*.js': ['coverage'],
-      '**/*.jade': ['ng-jade2module']
+      '**/*.pug': ['ng-jade2module']
     },
 
     plugins: [
@@ -46,7 +46,7 @@ module.exports = function(config) {
       'karma-ng-jade2module-preprocessor'
     ],
 
-    coverageReporter: {type: 'text', dir: '/tmp'},
+    coverageReporter: { type: 'text', dir: '/tmp' },
 
     ngJade2ModulePreprocessor: {
       stripPrefix: 'frontend',
