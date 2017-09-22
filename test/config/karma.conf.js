@@ -51,10 +51,21 @@ module.exports = function(config) {
     ngJade2ModulePreprocessor: {
       stripPrefix: 'frontend',
       prependPrefix: MODULE_DIR_NAME,
+      cacheIdFromPath: function(filepath) {
+        return filepath
+          .replace(/pug$/, 'html')
+          .replace(/^frontend/, '/seed')
+          .replace(/^node_modules\/linagora-rse\/frontend/, '');
+      },
       // setting this option will create only a single module that contains templates
       // from all the files, so you can load them all with module('templates')
-      jadeRenderConfig: {
+      jadeRenderOptions: {
         basedir: require('path').resolve(__dirname, '../../node_modules/linagora-rse/frontend/views')
+      },
+      jadeRenderLocals: {
+        __: function(str) {
+          return str;
+        }
       },
       moduleName: 'jadeTemplates'
     }
