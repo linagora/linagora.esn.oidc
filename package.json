@@ -17,6 +17,7 @@
     "grunt-contrib-jshint": "1.1.0",
     "grunt-contrib-watch": "1.0.0",
     "grunt-eslint": "19.0.0",
+    "grunt-i18n-checker": "linagora/grunt-i18n-checker#v2.0.0",
     "grunt-karma": "2.0.0",
     "grunt-lint-pattern": "linagora/grunt-lint-pattern#7c6f4e1bc98c2851fec2714e115ac33e1b064ca7",
     "grunt-mocha-cli": "3.0.0",
@@ -45,7 +46,8 @@
     "sinon-chai": "2.8.0",
     "socket.io": "1.2.1",
     "supertest": "2.0.0",
-    "time-grunt": "^1.4.0"
+    "time-grunt": "1.4.0",
+    "i18n-checker": "linagora/i18n-checker#v2.0.0"
   },
   "scripts": {
     "test": "grunt test",
