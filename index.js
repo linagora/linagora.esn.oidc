@@ -13,7 +13,8 @@ const myAwesomeModule = new AwesomeModule(MODULE_NAME, {
     new Dependency(Dependency.TYPE_NAME, 'linagora.esn.core.logger', 'logger'),
     new Dependency(Dependency.TYPE_NAME, 'linagora.esn.core.webserver.wrapper', 'webserver-wrapper'),
     new Dependency(Dependency.TYPE_NAME, 'linagora.esn.core.db', 'db'),
-    new Dependency(Dependency.TYPE_NAME, 'linagora.esn.core.webserver.middleware.authorization', 'authorizationMW')
+    new Dependency(Dependency.TYPE_NAME, 'linagora.esn.core.webserver.middleware.authorization', 'authorizationMW'),
+    new Dependency(Dependency.TYPE_NAME, 'linagora.esn.core.i18n', 'i18n')
   ],
 
   states: {
