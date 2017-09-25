@@ -59,12 +59,16 @@ class GruntfileUtils {
       (servers.redis.pwd ? '--requirepass' + servers.redis.pwd : ''),
       (servers.redis.conf_file ? servers.redis.conf_file : ''));
 
-    commandObject.mongo = function() {
-      return util.format('%s --dbpath %s --port %s %s',
+    commandObject.mongo = function(repl) {
+      var replset = repl ?
+        util.format('--replSet \'%s\' --smallfiles --oplogSize 128', servers.mongodb.replicat_set_name) :
+        '--nojournal';
+
+      return util.format('%s --nounixsocket --dbpath %s --port %s %s',
         servers.mongodb.cmd,
         servers.mongodb.dbpath,
         (servers.mongodb.port ? servers.mongodb.port : '23456'),
-        '--nojournal');
+        replset);
     };
 
     return commandObject;

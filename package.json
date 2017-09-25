@@ -4,8 +4,8 @@
   "description": "OpenPaaS Module sample to create new ones",
   "main": "index.js",
   "devDependencies": {
-    "chai": "4.1.2",
-    "chai-as-promised": "5.3.1",
+    "chai": "3.5.0",
+    "chai-as-promised": "5.3.0",
     "chai-shallow-deep-equal": "1.4.0",
     "eslint": "3.6.0",
     "eslint-config-airbnb-base": "8.0.0",
@@ -13,14 +13,15 @@
     "eslint-plugin-import": "1.16.0",
     "grunt": "1.0.1",
     "grunt-continue": "0.1.0",
-    "grunt-contrib-clean": "1.1.0",
     "grunt-contrib-concat": "1.0.1",
     "grunt-contrib-jshint": "1.1.0",
     "grunt-contrib-watch": "1.0.0",
     "grunt-eslint": "19.0.0",
     "grunt-karma": "2.0.0",
-    "grunt-lint-pattern": "0.1.4",
+    "grunt-lint-pattern": "linagora/grunt-lint-pattern#7c6f4e1bc98c2851fec2714e115ac33e1b064ca7",
     "grunt-mocha-cli": "3.0.0",
+    "grunt-puglint": "1.0.0",
+    "grunt-contrib-clean": "1.0.0",
     "grunt-run": "0.6.0",
     "grunt-run-grunt": "linagora/grunt-run-grunt.git",
     "grunt-shell": "2.1.0",
@@ -38,8 +39,8 @@
     "mocha": "3.1.2",
     "mockery": "1.7.0",
     "mongoose": "4.7.1",
-    "rewire": "2.5.2",
     "phantomjs-prebuilt": "2.1.12",
+    "rewire": "2.5.2",
     "sinon": "1.17.5",
     "sinon-chai": "2.8.0",
     "socket.io": "1.2.1",
@@ -56,8 +57,8 @@
   },
   "author": "Linagora R&D",
   "license": "AGPL-3.0",
-  "engines" : {
-    "node" : ">=6.5.0"
+  "engines": {
+    "node": ">=6.5.0"
   },
   "dependencies": {
     "awesome-module": "1.1.0",
