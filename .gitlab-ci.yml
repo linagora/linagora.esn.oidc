@@ -15,11 +15,10 @@ test:
     - rabbitmq:3.6
   script:
     - npm i
-    - npm update
     - bower i --allow-root
     - grunt --chunk=1 --ci
 
-deploy_dev:
+.deploy_dev:
   stage: deploy_dev
   tags:
     - dev.open-paas.org
