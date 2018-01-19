@@ -2,7 +2,7 @@
 
 const request = require('supertest');
 const expect = require('chai').expect;
-const MODULE_NAME = 'awesome.module.seed';
+const MODULE_NAME = 'linagora.esn.seed';
 
 describe('The example API', function() {
   let user, app;

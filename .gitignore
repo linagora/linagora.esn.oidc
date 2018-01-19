@@ -2,3 +2,5 @@ node_modules
 frontend/components
 .idea
 *.log
+package-lock.json
+yarn.lock

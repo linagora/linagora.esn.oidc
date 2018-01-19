@@ -10,7 +10,7 @@ describe('the seedHomeController', function() {
 
   beforeEach(function() {
 
-    angular.mock.module('awesome.module.seed');
+    angular.mock.module('linagora.esn.seed');
 
     angular.mock.inject(function(_$rootScope_, _$controller_) {
       $rootScope = _$rootScope_;
