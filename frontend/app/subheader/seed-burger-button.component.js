@@ -1,7 +1,7 @@
 'use strict';
 
-var MODULE_NAME = 'awesome.module.seed';
-var MODULE_DIR_NAME = '/awesome.module.seed';
+var MODULE_NAME = 'linagora.esn.seed';
+var MODULE_DIR_NAME = '/linagora.esn.seed';
 
 angular.module(MODULE_NAME)
 

@@ -5,10 +5,9 @@ const Dependency = AwesomeModule.AwesomeModuleDependency;
 const path = require('path');
 const glob = require('glob-all');
 const FRONTEND_JS_PATH = __dirname + '/frontend/app/';
-const MODULE_NAME = 'awesome.module.seed';
-const MODULE_PREFIX = 'seed';
+const AWESOME_MODULE_NAME = 'linagora.esn.seed';
 
-const myAwesomeModule = new AwesomeModule(MODULE_NAME, {
+const myAwesomeModule = new AwesomeModule(AWESOME_MODULE_NAME, {
   dependencies: [
     new Dependency(Dependency.TYPE_NAME, 'linagora.esn.core.logger', 'logger'),
     new Dependency(Dependency.TYPE_NAME, 'linagora.esn.core.webserver.wrapper', 'webserver-wrapper'),
@@ -35,28 +34,28 @@ const myAwesomeModule = new AwesomeModule(MODULE_NAME, {
     deploy: function(dependencies, callback) {
       // Register the webapp
       const app = require('./backend/webserver/application')(dependencies, this);
+
       // Register every exposed endpoints
       app.use('/api', this.api.module);
 
       const webserverWrapper = dependencies('webserver-wrapper');
+
       // Register every exposed frontend scripts
-      const jsFiles = glob.sync([
-        FRONTEND_JS_PATH + MODULE_PREFIX + '.app.js',
-        FRONTEND_JS_PATH + '*.js',
-        FRONTEND_JS_PATH + '*/!(*spec).js',
-        FRONTEND_JS_PATH + '**/*/!(*spec).js'
-      ]).map(function(filepath) {
+      const frontendJsFilesFullPath = glob.sync([
+        FRONTEND_JS_PATH + '**/*.module.js',
+        FRONTEND_JS_PATH + '**/!(*spec).js'
+      ]);
+      const frontendJsFilesUri = frontendJsFilesFullPath.map(function(filepath) {
         return filepath.replace(FRONTEND_JS_PATH, '');
       });
-      webserverWrapper.injectAngularAppModules(MODULE_NAME, jsFiles, [MODULE_NAME], ['esn']);
-      const lessFile = path.resolve(__dirname, `./frontend/app/${MODULE_PREFIX}.styles.less`);
-      webserverWrapper.injectLess(MODULE_NAME, [lessFile], 'esn');
-      const jsResourceFiles = [
-        "../components/angular-translate/angular-translate.min.js",
-        "../components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"
-      ];
-      webserverWrapper.injectJS(MODULE_NAME, jsResourceFiles, 'esn');
-      webserverWrapper.addApp(MODULE_NAME, app);
+      const lessFile = path.join(FRONTEND_JS_PATH, 'app.less');
+
+      webserverWrapper.injectAngularAppModules(AWESOME_MODULE_NAME, frontendJsFilesUri, AWESOME_MODULE_NAME, ['esn'], {
+        localJsFiles: frontendJsFilesFullPath
+      });
+      webserverWrapper.injectLess(AWESOME_MODULE_NAME, [lessFile], 'esn');
+
+      webserverWrapper.addApp(AWESOME_MODULE_NAME, app);
 
       return callback();
     }

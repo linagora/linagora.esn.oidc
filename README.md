@@ -10,7 +10,7 @@ While waiting for a npm-based dependency injection handler, you have to install 
 
 **1. Clone**
 
-```
+```bash
 git clone https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.seed.git
 ```
 
@@ -22,21 +22,20 @@ There is two way to install the model in OpenPaaS, so choose one of them:
 
   The modules must be available in the `$ESN/modules` folder:
 
-  ```
-  cd $ESN/modules
-  ln -s path_to_module/linagora.esn.seed
+  ```bash
+  ln -s path_to_module/linagora.esn.seed $ESN/modules/
   ```
 - B. _Using npm link_
 
   Go inside the module repository:
-  
-  ```
+
+  ```bash
   npm link
   ```
-  
+
   Go inside OpenPaaS ESN repository:
-  
-  ```
+
+  ```bash
   cd $ESN
   npm link linagora.esn.seed
   npm install
