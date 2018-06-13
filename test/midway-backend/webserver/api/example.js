@@ -15,13 +15,13 @@ describe('The example API', function() {
       if (err) {
         return done(err);
       }
-      const seedApp = require(self.testEnv.backendPath + '/webserver/application')(self.helpers.modules.current.deps);
+      const application = require(self.testEnv.backendPath + '/webserver/application')(self.helpers.modules.current.deps);
       const api = require(self.testEnv.backendPath + '/webserver/api')(self.helpers.modules.current.deps, self.helpers.modules.current.lib.lib);
 
-      seedApp.use(require('body-parser').json());
-      seedApp.use('/api', api);
+      application.use(require('body-parser').json());
+      application.use('/api', api);
 
-      app = self.helpers.modules.getWebServer(seedApp);
+      app = self.helpers.modules.getWebServer(application);
 
       self.helpers.api.applyDomainDeployment('linagora_IT', function(err, models) {
         if (err) {
