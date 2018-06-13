@@ -7,7 +7,7 @@ const glob = require('glob-all');
 const FRONTEND_JS_PATH = __dirname + '/frontend/app/';
 const AWESOME_MODULE_NAME = 'linagora.esn.seed';
 
-const myAwesomeModule = new AwesomeModule(AWESOME_MODULE_NAME, {
+const awesomeModule = new AwesomeModule(AWESOME_MODULE_NAME, {
   dependencies: [
     new Dependency(Dependency.TYPE_NAME, 'linagora.esn.core.logger', 'logger'),
     new Dependency(Dependency.TYPE_NAME, 'linagora.esn.core.webserver.wrapper', 'webserver-wrapper'),
@@ -66,4 +66,4 @@ const myAwesomeModule = new AwesomeModule(AWESOME_MODULE_NAME, {
  * The main AwesomeModule describing the application.
  * @type {AwesomeModule}
  */
-module.exports = myAwesomeModule;
+module.exports = awesomeModule;
