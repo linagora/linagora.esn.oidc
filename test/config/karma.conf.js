@@ -18,7 +18,7 @@ module.exports = function(config) {
       'frontend/components/lodash/dist/lodash.min.js',
       'frontend/components/sinon-chai/lib/sinon-chai.js',
       'node_modules/sinon/pkg/sinon.js',
-      'test/config/mocks.js',
+      'test/unit-frontend/mocks/**/*.js',
       'frontend/app/**/*.module.js',
       'frontend/app/**/*.js',
       'frontend/app/**/*.pug'
