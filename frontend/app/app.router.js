@@ -23,6 +23,9 @@
             fn: function() {
               return { state: 'example.home' };
             }
+          },
+          resolve: {
+            isModuleActive: isModuleActive
           }
         })
         .state('example.home', {
@@ -35,5 +38,15 @@
             }
           }
         });
+
+        function isModuleActive($location, seedConfiguration) {
+          return seedConfiguration.get('enabled', true).then(function(isEnabled) {
+            if (!isEnabled) {
+              $location.path('/');
+            }
+          }).catch(function() {
+            $location.path('/');
+          });
+        }
     });
 })();

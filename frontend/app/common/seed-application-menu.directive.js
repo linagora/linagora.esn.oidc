@@ -9,7 +9,7 @@
   function seedApplicationMenu(applicationMenuTemplateBuilder) {
     var directive = {
       restrict: 'E',
-      template: applicationMenuTemplateBuilder('/#/example', 'mdi-emoticon-happy', 'Seed'),
+      template: applicationMenuTemplateBuilder('/#/example', '/images/application.png', 'Seed', 'core.modules.linagora.esn.seed.enabled', true),
       replace: true
     };
 
