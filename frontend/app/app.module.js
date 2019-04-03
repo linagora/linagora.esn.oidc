@@ -6,6 +6,7 @@
   angular.module(MODULE_NAME, [
     'ui.router',
     'op.dynamicDirective',
-    'restangular'
+    'restangular',
+    'esn.module-registry'
   ]);
 })();

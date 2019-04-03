@@ -10,3 +10,7 @@ angular.module('pascalprecht.translate', [])
       $get: angular.noop
     };
   });
+angular.module('esn.module-registry', [])
+  .factory('esnModuleRegistry', function() {
+    return {};
+  });
