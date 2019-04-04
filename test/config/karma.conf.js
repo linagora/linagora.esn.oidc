@@ -25,7 +25,7 @@ module.exports = function(config) {
     ],
     exclude: [
       'frontend/app/app.router.js',
-      'frontend/app/app.run.js'
+      'frontend/app/app.module-registry.run.js'
     ],
     frameworks: ['mocha'],
     colors: true,
