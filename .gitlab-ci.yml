@@ -1,3 +1,5 @@
+image: node:10-stretch
+
 stages:
   - prepare
   - linters
@@ -13,7 +15,7 @@ stages:
   policy: pull
 
 .test-template: &test-template
-  image: node:8.15.0-stretch
+  image: node:10-stretch
   stage: test
   tags:
     - docker
@@ -53,7 +55,7 @@ stages:
     REDIS_PORT: 6379
 
 prepare:
-  image: node:8.15.0-stretch
+  image: node:10-stretch
   stage: prepare
   tags:
     - docker
