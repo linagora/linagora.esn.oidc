@@ -7,7 +7,9 @@ const path = require('path');
 const testConfig = require('../config/servers-conf');
 const basePath = path.resolve(__dirname + '/../../node_modules/linagora-rse');
 const backendPath = path.normalize(__dirname + '/../../backend');
-const MODULE_NAME = 'linagora.esn.seed';
+const MODULE_NAME = 'seed';
+const AWESOME_MODULE_NAME = `linagora.esn.${MODULE_NAME}`;
+
 let rse;
 
 before(function(done) {
@@ -45,11 +47,31 @@ before(function(done) {
   const nodeModulesPath = path.normalize(
     path.join(__dirname, '../../node_modules/')
   );
-  const nodeModulesLoader = manager.loaders.filesystem(nodeModulesPath, true);
+
   const loader = manager.loaders.code(require('../../index.js'), true);
+  const nodeModulesLoader = manager.loaders.filesystem(nodeModulesPath, true);
 
-  manager.appendLoader(nodeModulesLoader);
   manager.appendLoader(loader);
+  manager.appendLoader(nodeModulesLoader);
 
-  loader.load(MODULE_NAME, done);
+  loader.load(AWESOME_MODULE_NAME, done);
+});
+
+before(function(done) {
+  const self = this;
+
+  self.helpers.modules.initMidway(AWESOME_MODULE_NAME, self.helpers.callbacks.noErrorAnd(() => {
+    const expressApp = require(`${self.testEnv.backendPath}/webserver/application`)(self.helpers.modules.current.deps);
+    const api = require(`${self.testEnv.backendPath}/webserver/api`)(self.helpers.modules.current.deps, self.helpers.modules.current.lib.lib);
+
+    expressApp.use(require('body-parser').json());
+    expressApp.use(`/${MODULE_NAME}/api`, api);
+    self.helpers.modules.current.app = self.helpers.modules.getWebServer(expressApp);
+
+    done();
+  }));
+});
+
+afterEach(function(done) {
+  this.helpers.mongo.dropDatabase(err => done(err));
 });
