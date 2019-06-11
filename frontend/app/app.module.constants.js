@@ -9,6 +9,7 @@
       title: 'Seed',
       icon: '/images/application.png',
       homePage: 'Seed',
-      disableable: true
+      disableable: true,
+      isDisplayedByDefault: true
     });
 })();

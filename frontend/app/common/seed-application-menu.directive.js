@@ -6,10 +6,10 @@
   angular.module(MODULE_NAME)
          .directive('seedApplicationMenu', seedApplicationMenu);
 
-  function seedApplicationMenu(applicationMenuTemplateBuilder) {
+  function seedApplicationMenu(applicationMenuTemplateBuilder, SEED_MODULE_METADATA) {
     var directive = {
       restrict: 'E',
-      template: applicationMenuTemplateBuilder('/#/example', '/images/application.png', 'Seed', 'core.modules.linagora.esn.seed.enabled', true),
+      template: applicationMenuTemplateBuilder('/#/example', '/images/application.png', 'Seed', 'core.modules.linagora.esn.seed.enabled', SEED_MODULE_METADATA.isDisplayedByDefault),
       replace: true
     };
 
