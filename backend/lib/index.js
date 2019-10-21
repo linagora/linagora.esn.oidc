@@ -1,10 +1,11 @@
-'use strict';
+module.exports = dependencies => {
+  const auth = require('./auth')(dependencies);
 
-module.exports = function(dependencies) {
-
-  const models = require('./db')(dependencies);
+  function init() {
+    auth.init();
+  }
 
   return {
-    models
+    init
   };
 };

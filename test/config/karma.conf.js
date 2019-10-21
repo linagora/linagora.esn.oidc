@@ -1,6 +1,6 @@
 'use strict';
 
-const MODULE_DIR_NAME = '/linagora.esn.seed';
+const MODULE_DIR_NAME = '/linagora.esn.oidc';
 
 module.exports = function(config) {
   config.set({

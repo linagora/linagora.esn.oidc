@@ -1,6 +1,6 @@
-# linagora.esn.seed
+# linagora.esn.oidc
 
-Seed module as basis to create other modules
+OpenID Connect support for OpenPaaS
 
 ## Install
 
@@ -11,7 +11,7 @@ While waiting for a npm-based dependency injection handler, you have to install 
 **1. Clone**
 
 ```bash
-git clone https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.seed.git
+git clone https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.oidc.git
 ```
 
 **2. Install it in OpenPaaS**
@@ -23,7 +23,7 @@ There is two way to install the model in OpenPaaS, so choose one of them:
   The modules must be available in the `$ESN/modules` folder:
 
   ```bash
-  ln -s path_to_module/linagora.esn.seed $ESN/modules/
+  ln -s path_to_module/linagora.esn.oidc $ESN/modules/
   ```
 - B. _Using npm link_
 
@@ -37,7 +37,7 @@ There is two way to install the model in OpenPaaS, so choose one of them:
 
   ```bash
   cd $ESN
-  npm link linagora.esn.seed
+  npm link linagora.esn.oidc
   npm install
   ```
 
@@ -50,10 +50,14 @@ Copy the 'modules' array from `$ESN/config/default.json` into `$ESN/config/defau
 "modules": [
   "linagora.esn.core.webserver",
   "linagora.esn.core.wsserver",
-  "linagora.esn.seed"
+  "linagora.esn.oidc"
 ],
 ```
 
+## Configure
+
+The module needs configuration to reach the OIDC provider correctly. This must be defined with the configuration service as described in http://docs.open-paas.org/apis/auth/oidc/#configuration.
+
 ## Run
 
-Once installed, you can start OpenPaaS ESN as usual. The **awesome module** is available in the application grid menu.
+Once installed, you can start OpenPaaS ESN as usual. When the user needs to log in, he will be redirected to the OIDC login page.

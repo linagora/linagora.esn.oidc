@@ -1,8 +1,0 @@
-button.btn.btn-link.seed-button(ng-click= "ctrl.seedClick()", ng-disabled= "ctrl.seedDisabled", ng-switch = "ctrl.seedIconPosition")
-  .seed-button-icon-and-text(ng-switch-when= "right")
-    span {{ ctrl.seedIconText | translate }}
-    i.mdi(ng-class= "ctrl.seedIconClass")
-
-  .seed-button-icon-and-text(ng-switch-default)
-    i.mdi(ng-class= "ctrl.seedIconClass")
-    span {{ ctrl.seedIconText | translate }}

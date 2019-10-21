@@ -1,7 +1,7 @@
 {
-  "name": "linagora.esn.seed",
+  "name": "linagora.esn.oidc",
   "version": "0.0.1",
-  "description": "OpenPaaS Module sample to create new ones",
+  "description": "OpenID Connect module for OpenPaaS",
   "main": "index.js",
   "devDependencies": {
     "@linagora/grunt-i18n-checker": "2.0.5",
@@ -48,7 +48,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.seed.git"
+    "url": "https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.oidc.git"
   },
   "author": "Linagora R&D",
   "license": "AGPL-3.0",
@@ -62,6 +62,7 @@
     "express": "4.17.1",
     "glob-all": "3.1.0",
     "lodash": "4.17.15",
+    "passport-openidconnect": "0.0.2",
     "q": "1.4.1"
   }
 }

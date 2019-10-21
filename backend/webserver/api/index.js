@@ -1,13 +1,9 @@
-'use strict';
-
 const express = require('express');
 
-module.exports = function(dependencies, lib) {
-
+module.exports = (dependencies, lib) => {
   const router = express.Router();
-  const moduleName = 'linagora.esn.seed';
 
-  require('./example')(dependencies, lib, router, moduleName);
+  require('./callback')(dependencies, lib, router);
 
   return router;
 };

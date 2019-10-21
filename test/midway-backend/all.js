@@ -7,7 +7,7 @@ const path = require('path');
 const testConfig = require('../config/servers-conf');
 const basePath = path.resolve(__dirname + '/../../node_modules/linagora-rse');
 const backendPath = path.normalize(__dirname + '/../../backend');
-const MODULE_NAME = 'seed';
+const MODULE_NAME = 'oidc';
 const AWESOME_MODULE_NAME = `linagora.esn.${MODULE_NAME}`;
 
 let rse;
