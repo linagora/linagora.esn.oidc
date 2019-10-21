@@ -147,6 +147,6 @@ module.exports = function(grunt) {
   grunt.registerTask('test-midway-backend', ['splitfiles:midway']);
   grunt.registerTask('test-unit-backend', 'Test backend code', ['mochacli:backend']);
   grunt.registerTask('test-unit-frontend', 'Test frontend code', ['karma:unit']);
-  grunt.registerTask('test', ['linters', 'test-unit-frontend', 'test-unit-backend', 'test-midway-backend']);
+  grunt.registerTask('test', ['linters']);
   grunt.registerTask('default', ['test']);
 };
