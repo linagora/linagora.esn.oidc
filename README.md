@@ -11,7 +11,7 @@ While waiting for a npm-based dependency injection handler, you have to install 
 **1. Clone**
 
 ```bash
-git clone https://ci.linagora.com/linagora/lgs/openpaas/linagora.esn.oidc.git
+git clone https://github.com/linagora/linagora.esn.oidc.git
 ```
 
 **2. Install it in OpenPaaS**
