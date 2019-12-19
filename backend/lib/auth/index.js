@@ -1,3 +1,4 @@
+const util = require('util');
 const {
   CONFIG_KEY,
   STRATEGY_NAME,
@@ -9,6 +10,7 @@ module.exports = dependencies => {
   const logger = dependencies('logger');
   const coreAuth = dependencies('auth');
   const esnConfig = dependencies('esn-config');
+  const configHelper = dependencies('helpers').config;
   const passport = dependencies('passport').get();
   const strategy = require('./strategy')(dependencies);
 
@@ -51,9 +53,20 @@ module.exports = dependencies => {
 
   // do not remove next parameter otherwise composable-middleware won't call it
   function logoutHandler(req, res, next) { // eslint-disable-line no-unused-vars
-    req.logout();
-    // TODO: Call the OIDC logout endpoint
-    res.redirect('/');
+    Promise.all([getConfiguration(), getBaseUrl(req.user)])
+      .then(result => {
+        const [config, baseUrl] = result;
+        const redirectUrl = config.endSessionEndpoint ? `${config.endSessionEndpoint}?redirect_uri=${encodeURIComponent(baseUrl)}` : '/';
+
+        logger.debug(`OIDC - Logout redirects to ${redirectUrl}`);
+        req.logout();
+        res.redirect(redirectUrl);
+      })
+      .catch(err => {
+        logger.warn('OIDC - Error while building logout URL', err);
+        req.logout();
+        res.redirect('/');
+      });
   }
 
   function getConfiguration() {
@@ -68,7 +81,12 @@ module.exports = dependencies => {
         tokenURL: config.token_url,
         userInfoURL: config.user_info_url,
         callbackURL: config.callback_url,
-        scope: config.scope
+        scope: config.scope,
+        endSessionEndpoint: config.end_session_endpoint
       }));
+  }
+
+  function getBaseUrl(user) {
+    return util.promisify(configHelper.getBaseUrl)(user);
   }
 };

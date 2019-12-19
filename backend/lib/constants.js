@@ -7,6 +7,7 @@ module.exports = {
     authorization_url: 'http://localhost:8888/auth/realms/master/protocol/openid-connect/auth',
     token_url: 'http://localhost:8888/auth/realms/master/protocol/openid-connect/token',
     user_info_url: 'http://localhost:8888/auth/realms/master/protocol/openid-connect/userinfo',
+    end_session_endpoint: 'http://localhost:8888/auth/realms/master/protocol/openid-connect/logout',
     client_id: 'openpaas-esn'
   },
   PASSPORT_PARAMETERS: {
