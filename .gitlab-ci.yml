@@ -100,19 +100,19 @@ check_author:
       - /^release-.*/@linagora/lgs/openpaas/linagora.esn.oidc
 
 ####### tests without services requirements
-frontend-test:
+.frontend-test:
   <<: *test-template
   script:
     - grunt -v test-unit-frontend
 
-unit-backend-test:
+.unit-backend-test:
   <<: *test-template
   script:
     - grunt -v --chunk=1 test-unit-backend
 
 ####### tests with services requirements
 
-midway-backend-test:
+.midway-backend-test:
   <<: *test-template-svc
   script:
     - grunt --chunk=1 -v test-midway-backend
