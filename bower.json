@@ -1,7 +1,7 @@
 {
   "name": "linagora.esn.oidc",
   "main": "index.js",
-  "version": "1.7.5-dev",
+  "version": "1.7.5-rc3",
   "authors": [
     "Linagora Folks <openpaas@linagora.com>"
   ],
