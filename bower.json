@@ -1,7 +1,7 @@
 {
   "name": "linagora.esn.oidc",
   "main": "index.js",
-  "version": "1.8.0-devwebpack",
+  "version": "1.8.0-devwebpack.3",
   "authors": [
     "Linagora Folks <openpaas@linagora.com>"
   ],
