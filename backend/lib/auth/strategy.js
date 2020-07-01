@@ -8,18 +8,18 @@ module.exports = dependencies => {
   const logger = dependencies('logger');
 
   return options => {
-    logger.info('OIDC - Creating OIDC Passport strategy with', options);
+    logger.info('Passport OIDC - Creating OIDC Passport strategy with', options);
 
     return new OidcStrategy(options, verify);
   };
 
   function verify(issuer, sub, profile, accessToken, refreshToken, done) {
-    logger.debug('OIDC - Got response from OIDC server, checking user in OpenPaaS', issuer, sub, profile, accessToken, refreshToken);
+    logger.debug('Passport OIDC - Got response from OIDC server, checking user in OpenPaaS', issuer, sub, profile, accessToken, refreshToken);
 
     const email = profile._json.email;
 
     if (!email) {
-      logger.error('OIDC - "email" is required in scope, check OIDC configuration');
+      logger.error('Passport OIDC - "email" is required in scope, check OIDC configuration');
 
       return done(null, false);
     }
@@ -33,7 +33,7 @@ module.exports = dependencies => {
       .then(profile => findOrCreate(email, profile))
       .then(user => {
         if (!user) {
-          logger.error('OIDC - Can not find or create user from OIDC one');
+          logger.error('Passport OIDC - Cannot find or create user from OIDC one');
 
           return done(null, false);
         }
@@ -41,7 +41,7 @@ module.exports = dependencies => {
         done(null, user);
       })
       .catch(err => {
-        logger.error('OIDC - Error while searching user', err);
+        logger.error('Passport OIDC - Error while searching user', err);
         done(null, false);
       });
   }
@@ -72,7 +72,7 @@ module.exports = dependencies => {
       .then(domain => (domain && domain.id))
       .then(domainId => {
         if (!domainId) {
-          throw new Error('OIDC - Can not find the domain with name', domainName);
+          throw new Error('Passport OIDC - Can not find the domain with name', domainName);
         }
 
         return domainId;

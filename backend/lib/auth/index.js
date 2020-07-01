@@ -3,7 +3,8 @@ const {
   CONFIG_KEY,
   STRATEGY_NAME,
   DEFAULT_PASSPORT_CONFIG,
-  PASSPORT_PARAMETERS
+  PASSPORT_PARAMETERS,
+  CLIENT_ID
 } = require('../constants');
 
 module.exports = dependencies => {
@@ -29,7 +30,7 @@ module.exports = dependencies => {
   }
 
   function reconfigureOnChange() {
-    esnConfig('oidc').onChange(() => {
+    esnConfig(CONFIG_KEY).onChange(() => {
       logger.info('OIDC - Configuration changed, reconfiguring...');
       passport.unuse(STRATEGY_NAME);
 
@@ -70,12 +71,11 @@ module.exports = dependencies => {
   }
 
   function getConfiguration() {
-    return esnConfig(CONFIG_KEY)
-      .get()
+    return coreAuth['openid-connect'].getClientConfiguration(CLIENT_ID)
       .then(config => ({ ...DEFAULT_PASSPORT_CONFIG, ...config, ...PASSPORT_PARAMETERS }))
       .then(config => ({
         issuer: config.issuer_url,
-        clientID: config.client_id,
+        clientID: CLIENT_ID,
         clientSecret: config.client_secret,
         authorizationURL: config.authorization_url,
         tokenURL: config.token_url,

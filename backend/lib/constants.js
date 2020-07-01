@@ -1,7 +1,8 @@
 module.exports = {
   MODULE_NAME: 'linagora.esn.oidc',
-  CONFIG_KEY: 'oidc',
+  CONFIG_KEY: 'openid-connect',
   STRATEGY_NAME: 'passport-oidc',
+  CLIENT_ID: 'openpaas-esn',
   DEFAULT_PASSPORT_CONFIG: {
     issuer_url: 'http://localhost:8888/auth/realms/master',
     authorization_url: 'http://localhost:8888/auth/realms/master/protocol/openid-connect/auth',
