@@ -1,6 +1,6 @@
 {
   "name": "linagora.esn.oidc",
-  "version": "1.8.1-rc4",
+  "version": "1.8.1-dev",
   "description": "OpenID Connect module for OpenPaaS",
   "main": "index.js",
   "devDependencies": {
